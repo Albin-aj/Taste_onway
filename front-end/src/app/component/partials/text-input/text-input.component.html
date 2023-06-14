@@ -1,0 +1,9 @@
+<input-container [label]="label">
+<!-- <label class="text-xl" for="email">email:</label> -->
+    <input class="p-2 border border-black/70" [type]="type" [placeholder]="label" [formControl]="formControl">
+    <!-- <div *ngIf="fc.email.errors  && isSubmitted">
+      <small class="text-red-500" *ngIf="fc.email.errors?.required">email is required</small>
+      <small class="text-red-500" *ngIf="fc.email.errors?.email">Please enter a valid email address</small>
+    </div> -->
+    <input-validation [controls]="control" [showErrorWhen]="showErrorsWhen"></input-validation>
+  </input-container>

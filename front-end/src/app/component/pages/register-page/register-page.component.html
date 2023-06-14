@@ -1,0 +1,60 @@
+
+<section class="min-h-screen py-40 bg-gradient-to-r from-cyan-500 to-blue-500">
+  <div class="container mx-auto">
+    <div class="flex lg:flex-row flex-col lg:w-8/12 w-11/12 bg-white rounded-xl shadow-lg overflow-hidden mx-auto">
+      <div class="lg:w-1/2 w-full flex justify-center items-center bg-cover bg-center bg-no-repeat text-white" style="background-image: url(../../../../assets/register.jpeg);">
+        <div class="bg-black/40 p-5 h-full flex flex-col justify-center items-center">
+          <h1 class="text-3xl mb-3">Welcome</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor, officiis voluptates exercitationem vel asperiores reprehenderit fuga error atque fugit sapiente ipsum aspernatur. Dolorem assumenda corrupti numquam consectetur praesentium quo?</p>
+        </div>
+      </div>
+      <div class="lg:w-1/2 w-full px-12 py-16">
+        <h2 class="text-3xl mb-4 text-green-800 font-semibold">Register</h2>
+        <p class="mb-4 text-black/80">Create your account, It's and only take a minute!</p>
+        <form [formGroup]="RegisterForm" (submit)="submit()">
+          <div>
+            <input formControlName="name" type="text" placeholder="Fullname" class="border border-gray-400 w-full p-2">
+            <div *ngIf="this.fc.name.touched && this.fc.name.invalid">
+              <small *ngIf="this.fc.name.errors?.required" class="text-red-600">Name is required</small>
+              <small *ngIf="this.fc.name.errors?.minlength" class="text-red-600">Minimum length is 3 letter</small>
+            </div>
+          </div>
+          <div class="mt-5">
+            <input formControlName="email" type="text" placeholder="email" class="border border-gray-400  p-2 w-full">
+            <div *ngIf="this.fc.email.touched && this.fc.email.invalid">
+              <small *ngIf="this.fc.email.errors?.required" class="text-red-600">email is required</small>
+              <small *ngIf="this.fc.email.errors?.email" class="text-red-600">Please enter a valid id</small>
+            </div>
+          </div>
+          <div class="mt-5">
+            <input formControlName="password" type="text" placeholder="Password" class="border border-gray-400  p-2 w-full">
+            <div *ngIf="this.fc.password.touched && this.fc.password.invalid">
+              <small *ngIf="this.fc.password.errors?.required" class="text-red-600">Password is required</small>
+              <small *ngIf="this.fc.password.errors?.minlength" class="text-red-600">Minimum length is 5 letter</small>
+            </div>
+          </div>
+          <div class="mt-5">
+            <input formControlName="confirmPassword" type="text" placeholder="Confirm Password" class="border border-gray-400  p-2 w-full">
+            <div *ngIf="this.fc.confirmPassword.touched && this.fc.confirmPassword.invalid">
+              <small *ngIf="this.fc.confirmPassword.errors?.required" class="text-red-600">Password is required</small>
+            </div>
+          </div>
+          <div class="mt-5">
+            <input formControlName="address" type="text" placeholder="Address" class="border border-gray-400  p-2 w-full">
+            <div *ngIf="this.fc.address.touched && this.fc.address.invalid">
+              <small *ngIf="this.fc.address.errors?.required" class="text-red-600">Address is required</small>
+              <small *ngIf="this.fc.address.errors?.minlength" class="text-red-600">Minimum length is 5 letter</small>
+            </div>
+          </div>
+          <div class="mt-5">
+            <button type="submit" class="bg-purple-500 text-white text-center w-full py-3">Register Now</button>
+          </div>
+          <div class="mt-5">
+            <span >Already User?&nbsp;&nbsp;</span>
+            <span class="text-lg text-blue-600 font-medium" routerLink="/login" [queryParams]="{returnUrl:returnUrl}">Log Here!</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

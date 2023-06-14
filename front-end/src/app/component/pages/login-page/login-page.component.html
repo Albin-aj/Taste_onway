@@ -1,0 +1,30 @@
+<div class="p-5">
+  <app-title title="Login"></app-title>
+</div>
+<div class="h-full flex justify-center">
+  <form action="" [formGroup]="loginForm" (ngSubmit)="submit()">
+    <div class="bg-slate-50 p-10 justify-center flex flex-col gap-10 shadow-md">
+      <div class="flex flex-col text-lg space-y-4">
+
+        <text-input [control]="fc.email" [showErrorsWhen]="isSubmitted" type="email" label="Email"></text-input>
+        <text-input [control]="fc.password" [showErrorsWhen]="isSubmitted" type="password" label="password"></text-input>
+
+<!--
+        <label class="text-xl" for="password">Password:</label>
+        <input class="p-2 border border-black/70"  type="password" formControlName="password" placeholder="Password">
+        <div *ngIf="fc.password.errors && isSubmitted">
+          <small class="text-red-500">Password is required</small>
+        </div> -->
+      </div>
+      <!-- <button type="submit" class="p-2 text-white text-xl bg-blue-700">Login</button> -->
+      <div class="flex justify-center flex-col">
+        <default-button text="Login"></default-button>
+        <div class="mt-2">
+          <span>New User?&nbsp;&nbsp;</span>
+          <span class="text-lg font-medium text-blue-700" routerLink="/register" [queryParams]="{retrunUrl:retrunUrl}">Register now!</span>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

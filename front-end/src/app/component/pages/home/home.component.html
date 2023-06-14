@@ -1,0 +1,46 @@
+<app-search></app-search>
+<app-tags></app-tags>
+
+<app-not-found [visible]="!foods || !foods.length"
+notFoundMessage="No Item found!" message="We couldn't find what you searched for.  Try searching Again!"
+resetLinkText="RETURN TO SHOP"></app-not-found>
+
+
+  <div class="container px-5 text-gray-600 py-5 pb-24 mx-auto">
+    <div  class="flex flex-wrap -m-4 justify-center">
+      <div class="xl:w-1/4 md:w-1/2 p-4"*ngFor="let item of foods">
+        <div class="bg-slate-50 shadow-md p-2 rounded-lg w-[320px]" routerLink="/food/{{item.id}}">
+          <img class="h-60 rounded w-full object-cover object-center mb-1" src="{{item.imageUrl}}" alt="content">
+          <div class="flex justify-between overflow-hidden">
+          <h2 class="text-xl text-blue-700 font-semibold title-font">{{item.name}}</h2>
+          <i class="fa-regular fa-heart text-2xl"></i>
+          </div>
+          <div class="">
+            <star-rating [value]="item.stars"
+            [totalstars]="5"
+            checkedcolor="red"
+            uncheckedcolor="black"
+            size="24px"
+            [readonly]="true"
+            >
+            </star-rating>
+          </div>
+          <div class="flex justify-between">
+            <div class="space-x-2 w-44 overflow-hidden">
+              <span class="" *ngFor="let orign of item.origins">{{orign}}</span>
+            </div>
+            <!-- <p class="leading-relaxed text-base"></p> -->
+          <p class="text-lg font-semibold">
+            <i class="fa-regular fa-clock text-lg"></i>
+            {{item.cookTime}}
+          </p>
+          </div>
+          <p class="font-semibold text-lg text-green-700">{{item.price | currency}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+

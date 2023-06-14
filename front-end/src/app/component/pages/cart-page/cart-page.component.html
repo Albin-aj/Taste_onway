@@ -1,0 +1,43 @@
+<app-title title="Cart Page" margin="1.5rem 0 0 2.5rem"></app-title>
+<app-not-found [visible]="!cart || !cart.items.length"
+notFoundMessage="Your Cart is empty!" message="Looks like you have not added enything to your cart. Go ahead & explore Itmes"
+resetLinkText="RETURN TO SHOP"></app-not-found>
+
+<div *ngIf="cart.items.length" class=" flex flex-wrap items-start m-4 mt-2 gap-5">
+  <ul class="flex flex-col justify-evenly rounded-2xl list-none m-2 flex-auto border border-yellow-400">
+    <li *ngFor="let cartItem of cart.items" class="flex justify-around items-center flex-wrap p-2 border-b-[1px] last:border-b-0 border-yellow-400">
+      <div>
+        <img class="w-24 h-24 rounded-3xl object-cover" [src]="cartItem.food.imageUrl" [alt]="cartItem.food.name">
+      </div>
+      <div class="overflow-hidden flex flex-initial w-28">
+        <a href="" routerLink="/food/{{cartItem.food.id}}">{{cartItem.food.name}}</a>
+      </div>
+      <div>
+        <select  class="w-12 outline-none border-black border-b-2 text-lg"
+        #qantitySelect name="" id=""  [value]="cartItem.quantity "
+        (change)="changeQuantity(cartItem,qantitySelect.value)">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select>
+      </div>
+      <div>
+        {{cartItem.Price | currency}}
+      </div>
+      <div>
+        <button class="text-white bg-red-700 rounded-lg p-2 hover:bg-red-600" (click)="removeFromCart(cartItem)">Remove</button>
+      </div>
+    </li>
+<button class="bg-yellow-100 text-blue-600 p-3 text-lg font-medium rounded-2xl px-6 mt-10 " href="" routerLink="/">RETURN TO SHOP</button >
+
+  </ul>
+  <div class="flex flex-col justify-between items-center h-64 shadow-lg py-5 border border-yellow-600 p-2 m-2 rounded-md flex-initial w-[450px]">
+    <div class="text-lg flex flex-col">
+      <div class="font-medium">Count : {{ cart.totalCount}}</div>
+      <div class="font-medium mt-5">Price : {{cart.totalPrice |currency}}</div>
+    </div>
+    <a class="p-4 bg-blue-600 text-white rounded-3xl w-[80%] text-center justify-self-center cursor-pointer" href=""routerLink="/checkout">Proceed to Checkout</a>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<app-not-found [visible]="!food"
+notFoundMessage="No Item found!" message="We couldn't find the Item.  Try another One!"
+resetLinkText="RETURN TO SHOP"></app-not-found>
+
+
+
+
+<section *ngIf="food" class="text-gray-600 bg-slate-50 body-font md:mt-20 overflow-hidden">
+  <div class="container p-5 md:py-24 mx-auto overflow-hidden">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap shadow-xl overflow-hidden bg-white p-5 md:p-20">
+      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto shadow-xl h-64 object-cover object-center rounded" src="{{food.imageUrl}}">
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 px-5">
+        <div class="flex justify-between pr-4 overflow-hidden">
+           <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{{food.name}}</h1>
+           <i class="fa-regular fa-heart text-xl"></i>
+        </div>
+        <div class="flex mb-4">
+          <span class="flex items-center">
+           <div  class="">
+            <star-rating  [value]=food.stars
+            [totalstars]="5"
+            checkedcolor="red"
+            uncheckedcolor="gray"
+            size="24px"
+            [readonly]="true"
+            >
+            </star-rating>
+          </div>
+          </span>
+          <span class="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">
+            <a class="text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+              </svg>
+            </a>
+            <a class="text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+              </svg>
+            </a>
+            <a class="text-gray-500">
+              <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
+              </svg>
+            </a>
+          </span>
+        </div>
+        <div class="flex gap-3 overflow-hidden">
+        <p class="leading-relaxed bg-slate-100 p-1 px-5 rounded-full" *ngFor="let item of food?.origins">{{item}}</p>
+        </div>
+        <div class="flex my-5 gap-2">
+          <p class=" bg-slate-100 p-1 px-5 rounded-xl text-blue-700"  *ngFor="let type of food?.tags"  routerLink="/tag/{{type}}">{{type}}</p>
+        </div>
+        <p class="text-xl font-black/80 font-sans">Time to cook about {{food.cookTime}} Minutes</p>
+        <p class="text-xl text-green-700 my-5">Price: <span class="text-red-600 text-2xl">{{food.price |currency}}</span></p>
+        <button (click)="addToCart()" class="bg-blue-700 text-white px-12 p-4 rounded-lg mt-6 mb-10">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+

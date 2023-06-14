@@ -1,0 +1,5 @@
+<div class="md:flex grid grid-cols-3 justify-center gap-4 p-5 mt-10 md:text-lg md:p-2 font-medium">
+  <ul class="" *ngFor="let item of tags">
+    <li class="bg-slate-50 shadow-md whitespace-nowrap font-light rounded-xl px-3 p-1 cursor-pointer" routerLink="/tag/{{item.name}}">{{item.name}} ({{item.count}})</li>
+  </ul>
+</div>

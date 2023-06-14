@@ -1,0 +1,8 @@
+<div>
+  <button class="p-2 rounded-lg" [ngStyle]="{color:color,
+  'background-color':bgcolor,
+  'font-size.rem':fontSizeRem,
+  'width.rem':widthRem
+}"
+[type]="type" (click)="onClick.emit()"> {{text}} </button>
+</div>

@@ -1,0 +1,11 @@
+
+<div class="" *ngIf="visible">
+<div class="p-10 w-full items-center flex justify-center flex-col bg-[#f8f8f8]">
+  <img *ngIf="notFoundMessage === 'Your Cart is empty!'" class="rounded-2xl" src="../../../../assets/Screenshot from 2023-05-18 12-35-48.png" alt="">
+  <img *ngIf="notFoundMessage === 'No Item found!'" class="rounded-2xl" src="../../../../assets/search1.png" alt="">
+  <div class="text-3xl font-bold text-blue-600">  {{notFoundMessage}} </div>
+  <p class="max-w-[500px] text-lg text-black/70 my-5 text-center"> {{message}}</p>
+<button class="bg-blue-700 text-white p-4 text-lg rounded-2xl px-6 mt-10 " href="" [routerLink]="resetLinkRoute">{{resetLinkText}}</button >
+</div>
+
+</div>
